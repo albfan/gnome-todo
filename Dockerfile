@@ -1,6 +1,6 @@
 FROM waltervargas/jhbuild:debian
 LABEL maintainer "waltervargas@linux.com"
 
-ENV TEST test
+ENV PACKAGES gnome-todo
 
-RUN $HOME/.local/bin/jhbuild build gnome-todo
+RUN $HOME/.local/bin/jhbuild build $PACKAGES
