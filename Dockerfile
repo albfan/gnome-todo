@@ -1,4 +1,4 @@
-FROM waltervargas/jhbuild:debian
+FROM waltervargas/jhbuild-sysdeps-usefull-packages
 LABEL maintainer "waltervargas@linux.com"
 
 ENV PACKAGES gnome-todo
