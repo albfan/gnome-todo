@@ -3,4 +3,4 @@ LABEL maintainer "waltervargas@linux.com"
 
 ENV PACKAGES gnome-todo
 
-RUN $HOME/.local/bin/jhbuild build $PACKAGES
+RUN $HOME/.local/bin/jhbuild buildone $PACKAGES
