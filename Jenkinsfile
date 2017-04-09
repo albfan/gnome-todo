@@ -10,8 +10,9 @@ node {
 
   stage("Run Tests"){
     image.inside {
-      sh "echo Run tests"
-      sh "ls -la"
+      dir('tests') {
+        sh "make check"
+      }
     }
   }
 
