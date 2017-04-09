@@ -24,6 +24,14 @@ AX_REQUIRE_DEFINED([IT_PROG_INTLTOOL])
 # Add debug symbol
 AX_CHECK_ENABLE_DEBUG([yes], [GNOME_TODO_ENABLE_DEBUG])
 
+AC_ARG_ENABLE([tests],
+              AS_HELP_STRING([--enable-tests],
+                             [Enable always building tests during 'make all' [default=no]]),
+              [enable_tests=$enableval], [enable_tests=yes])
+
+AM_CONDITIONAL([ENABLE_TESTS], test "$enable_tests" = "yes")
+
+
 # Enable compiler warnings
 AX_COMPILER_FLAGS([GNOME_TODO_WARN_CFLAGS], [GNOME_TODO_WARN_LDFLAGS])
 
@@ -111,6 +119,7 @@ AM_CONDITIONAL(ENABLE_DOC_CROSS_REFERENCES, test x$enable_doc_cross_references !
 AC_CONFIG_FILES([
       Makefile
       src/Makefile
+      tests/Makefile
       data/Makefile
       data/icons/Makefile
       data/gnome-todo.pc
@@ -130,11 +139,13 @@ echo "
         gnome-todo $VERSION
         ==================
 
-        prefix:        ${prefix}
-        compiler:      ${CC}
-        global flags:  ${CFLAGS} ${CPPFLAGS} ${LDFLAGS}
-        release:       ${ax_is_release}
-        documentation: ${enable_gtk_doc}
+        prefix:          ${prefix}
+        compiler:        ${CC}
+        global flags:    ${CFLAGS} ${CPPFLAGS} ${LDFLAGS}
+        release:         ${ax_is_release}
+        documentation:   ${enable_gtk_doc}
+        build Test Suite ${enable_tests}
+
 
     Plugins:
         Dark theme .............. ${enable_dark_theme_plugin}
