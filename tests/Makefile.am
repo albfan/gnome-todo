@@ -13,3 +13,23 @@ endif
 
 check_PROGRAMS = $(TESTS)
 
+installed_test_programs = \
+	test-gtd-simple-test \
+	$(NULL)
+
+if ENABLE_INSTALLED_TESTS
+installed_test_PROGRAMS = \
+	$(installed_test_programs) \
+	$(NULL)
+
+installed_test_meta_DATA = $(installed_test_programs:=.test)
+
+%.test: %$(EXEEXT) Makefile
+	$(AM_V_GEN) (echo '[Test]' > $@.tmp; \
+	echo 'Type=session' >> $@.tmp; \
+	echo 'Exec=$(installed_testdir)/$(notdir $<) --tap' >> $@.tmp; \
+	echo 'Output=TAP' >> $@.tmp; \
+	mv $@.tmp $@)
+
+CLEANFILES = $(installed_test_meta_DATA)
+endif

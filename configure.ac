@@ -28,9 +28,18 @@ AC_ARG_ENABLE([tests],
               AS_HELP_STRING([--enable-tests],
                              [Enable always building tests during 'make all' [default=no]]),
               [enable_tests=$enableval], [enable_tests=yes])
-
 AM_CONDITIONAL([ENABLE_TESTS], test "$enable_tests" = "yes")
 
+AC_ARG_ENABLE(installed-tests,
+              AS_HELP_STRING([--enable-installed-tests],
+                             [Enable installation of some test cases]),
+              [enable_installed_tests=$enableval], [enable_installed_tests=yes])
+AM_CONDITIONAL([ENABLE_INSTALLED_TESTS], test "$enable_installed_tests" = "yes")
+
+if test "$enable_installed_tests" = "yes"; then
+  AC_SUBST(installed_test_metadir, [${datadir}/installed-tests/]AC_PACKAGE_NAME)
+  AC_SUBST(installed_testdir, [${libexecdir}/installed-tests/]AC_PACKAGE_NAME)
+fi
 
 # Enable compiler warnings
 AX_COMPILER_FLAGS([GNOME_TODO_WARN_CFLAGS], [GNOME_TODO_WARN_LDFLAGS])
@@ -145,6 +154,7 @@ echo "
         release:         ${ax_is_release}
         documentation:   ${enable_gtk_doc}
         build Test Suite ${enable_tests}
+        Installed tests  ${enable_installed_tests}
 
 
     Plugins:
