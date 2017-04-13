@@ -1,6 +1,2 @@
-FROM waltervargas/jhbuild-sysdeps-usefull-packages
-LABEL maintainer "waltervargas@linux.com"
-
-ENV PACKAGES gnome-todo
-
-RUN $HOME/.local/bin/jhbuild build $PACKAGES
+FROM albfan/dockerfile-flatpak
+LABEL maintainer "albertofanjul@gmail.com"
