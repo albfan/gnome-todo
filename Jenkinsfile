@@ -4,6 +4,7 @@ node {
   checkout scm
 
   stage("Building"){
+    sh "rm -rf /var/lib/jenkins/builds/*"
     sh "PATH=$PATH:/usr/local/bin flatpak-builder --force-clean --repo=repo dist org.gnome.Todo.Test.json"
   }
 
