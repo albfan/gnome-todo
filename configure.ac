@@ -85,6 +85,9 @@ AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
 GLIB_COMPILE_RESOURCES=`$PKG_CONFIG --variable glib_compile_resources gio-2.0`
 AC_SUBST([GLIB_COMPILE_RESOURCES])
 
+PKG_CHECK_MODULES(GNOME_TODO_TEST,
+                  glib-2.0 >= 2.43.4)
+
 PKG_CHECK_MODULES(GNOME_TODO,
                   gmodule-export-2.0
                   gio-2.0 >= 2.43.4
