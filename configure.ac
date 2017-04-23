@@ -102,6 +102,8 @@ if test "x$use_gcov" = "xyes"; then
     AC_MSG_ERROR([ccache must be disabled when --enable-gcov option is used. You can disable ccache by setting environment variable CCACHE_DISABLE=1.])
   fi
 
+  lcov -v
+  genhtml -v
   ltp_version_list="1.6 1.7 1.8 1.10 1.11 1.12"
   AC_CHECK_PROG(LTP, lcov, lcov)
   AC_CHECK_PROG(LTP_GENHTML, genhtml, genhtml)
@@ -109,10 +111,7 @@ if test "x$use_gcov" = "xyes"; then
   if test "$LTP"; then
     AC_CACHE_CHECK([for ltp version], glib_cv_ltp_version, [
       glib_cv_ltp_version=invalid
-      echo `$LTP -v 2>/dev/null`
-      echo `$LTP -v 2>/dev/null | $SED -e 's/^.* //'`
       ltp_version=`$LTP -v 2>/dev/null | $SED -e 's/^.* //'`
-      echo "--$ltp_version--"
       for ltp_check_version in $ltp_version_list; do
         if test "$ltp_version" = "$ltp_check_version"; then
           glib_cv_ltp_version="$ltp_check_version (ok)"
