@@ -102,6 +102,7 @@ if test "x$use_gcov" = "xyes"; then
     AC_MSG_ERROR([ccache must be disabled when --enable-gcov option is used. You can disable ccache by setting environment variable CCACHE_DISABLE=1.])
   fi
 
+  /usr/bin/lcov -v
   lcov -v
   genhtml -v
   ltp_version_list="1.6 1.7 1.8 1.10 1.11 1.12"
