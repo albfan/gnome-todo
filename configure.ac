@@ -109,7 +109,10 @@ if test "x$use_gcov" = "xyes"; then
   if test "$LTP"; then
     AC_CACHE_CHECK([for ltp version], glib_cv_ltp_version, [
       glib_cv_ltp_version=invalid
+      echo `$LTP -v 2>/dev/null`
+      echo `$LTP -v 2>/dev/null | $SED -e 's/^.* //'`
       ltp_version=`$LTP -v 2>/dev/null | $SED -e 's/^.* //'`
+      echo "--$ltp_version--"
       for ltp_check_version in $ltp_version_list; do
         if test "$ltp_version" = "$ltp_check_version"; then
           glib_cv_ltp_version="$ltp_check_version (ok)"
