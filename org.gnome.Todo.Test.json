@@ -118,6 +118,15 @@
             ]
         },
         {
+            "name": "ltp",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "http://github.com/linux-test-project/ltp.git"
+                }
+            ]
+        },
+        {
             "name": "gnome-todo",
             "sources": [
                 {
