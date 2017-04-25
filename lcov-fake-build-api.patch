@@ -1,0 +1,35 @@
+From c7c414269e75a93e91d01aec04cb3ba20b661fb8 Mon Sep 17 00:00:00 2001
+From: albfan <albertofanjul@gmail.com>
+Date: Tue, 25 Apr 2017 02:41:35 +0200
+Subject: [PATCH] Fake build-api
+
+---
+ Makefile   | 2 +-
+ autogen.sh | 0
+ configure  | 0
+ 3 files changed, 1 insertion(+), 1 deletion(-)
+ create mode 100755 autogen.sh
+ create mode 100755 configure
+
+diff --git a/Makefile b/Makefile
+index 5eb4d9b..e9bc2c6 100644
+--- a/Makefile
++++ b/Makefile
+@@ -15,7 +15,7 @@ VERSION := $(shell bin/get_version.sh --version)
+ RELEASE := $(shell bin/get_version.sh --release)
+ FULL    := $(shell bin/get_version.sh --full)
+ 
+-PREFIX  := /usr/local
++PREFIX  := /app
+ 
+ CFG_DIR := $(PREFIX)/etc
+ BIN_DIR := $(PREFIX)/bin
+diff --git a/autogen.sh b/autogen.sh
+new file mode 100755
+index 0000000..e69de29
+diff --git a/configure b/configure
+new file mode 100755
+index 0000000..e69de29
+-- 
+2.9.3
+
