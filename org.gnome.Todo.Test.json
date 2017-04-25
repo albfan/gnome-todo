@@ -118,11 +118,11 @@
             ]
         },
         {
-            "name": "ltp",
+            "name": "lcov",
             "sources": [
                 {
                     "type": "git",
-                    "url": "http://github.com/albfan/ltp.git"
+                    "url": "http://github.com/albfan/lcov.git"
                 }
             ]
         },
