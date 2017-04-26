@@ -87,6 +87,7 @@ genlcov:
 	$(LTP) --directory $(top_builddir) --capture --output-file gnome-todo-lcov.info --test-name GNOME_TODO_PERF --no-checksum
 	LANG=C $(LTP_GENHTML) --prefix $(top_builddir) --output-directory gnome-todo-lcov --title "GNOME Todo Code Coverage" --legend --show-details gnome-todo-lcov.info
 	$(top_srcdir)/lcov2cobertura -b $(top_srcdir) gnome-todo-lcov.info
+	$(top_srcdir)/gcovr --object-directory $(top_srcdir)
 
 lcov-clean:
 	-$(LTP) --directory $(top_builddir) -z
