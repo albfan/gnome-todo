@@ -107,12 +107,12 @@ if test "x$use_gcov" = "xyes"; then
   AC_CHECK_PROG(LTP_GENHTML, genhtml, genhtml)
 
   if test "$LTP"; then
-    AC_CACHE_CHECK([for ltp version], glib_cv_ltp_version, [
-      glib_cv_ltp_version=invalid
+    AC_CACHE_CHECK([for ltp version], gnome_todo_cv_ltp_version, [
+      gnome_todo_cv_ltp_version=invalid
       ltp_version=`$LTP -v 2>/dev/null | $SED -e 's/^.* //'`
       for ltp_check_version in $ltp_version_list; do
         if test "$ltp_version" = "$ltp_check_version"; then
-          glib_cv_ltp_version="$ltp_check_version (ok)"
+          gnome_todo_cv_ltp_version="$ltp_check_version (ok)"
         fi
       done
     ])
@@ -121,7 +121,7 @@ if test "x$use_gcov" = "xyes"; then
     AC_MSG_ERROR([$ltp_msg])
   fi
 
-  case $glib_cv_ltp_version in
+  case $gnome_todo_cv_ltp_version in
     ""|invalid[)]
       ltp_msg="You must have one of the following versions of LTP: $ltp_version_list (found: $ltp_version)."
       AC_MSG_ERROR([$ltp_msg])

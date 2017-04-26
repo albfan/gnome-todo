@@ -84,11 +84,9 @@ lcov:
 # placing the objects files in the .libs/ directory separate from the *.c
 # we also have to delete tests/.libs/libmoduletestplugin_*.gcda
 genlcov:
-	rm -f $(top_builddir)/tests/.libs/libmoduletestplugin_*.gcda
-	$(LTP) --directory $(top_builddir) --capture --output-file gnome-todo-lcov.info --test-name GLIB_PERF --no-checksum
-	$(SED) -e 's#.libs/##' < gnome-tod-lcov.info > gnome-todo-lcov.info.tmp
-	LANG=C $(LTP_GENHTML) --prefix $(top_builddir) --output-directory gnome-todo-lcov --title "GNOME Todo Code Coverage" --legend --show-details gnome-todo-lcov.info.tmp
-	rm -f gnome-todo-lcov.info.tmp
+	$(LTP) --directory $(top_builddir) --capture --output-file gnome-todo-lcov.info --test-name GNOME_TODO_PERF --no-checksum
+	LANG=C $(LTP_GENHTML) --prefix $(top_builddir) --output-directory gnome-todo-lcov --title "GNOME Todo Code Coverage" --legend --show-details gnome-todo-lcov.info
+	$(top_srcdir)/lcov2cobertura -b $(top_srcdir) gnome-todo-lcov.info
 
 lcov-clean:
 	-$(LTP) --directory $(top_builddir) -z
